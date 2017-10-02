@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		D872273C1F8255D800C13025 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D872273B1F8255D800C13025 /* AppDelegate.swift */; };
-		D872273E1F8255D800C13025 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D872273D1F8255D800C13025 /* ViewController.swift */; };
 		D87227411F8255D800C13025 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D872273F1F8255D800C13025 /* Main.storyboard */; };
 		D87227431F8255D800C13025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87227421F8255D800C13025 /* Assets.xcassets */; };
 		D87227461F8255D800C13025 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87227441F8255D800C13025 /* LaunchScreen.storyboard */; };
 		D87227511F8255D800C13025 /* ChinaWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87227501F8255D800C13025 /* ChinaWeatherTests.swift */; };
 		D872275C1F8255D800C13025 /* ChinaWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D872275B1F8255D800C13025 /* ChinaWeatherUITests.swift */; };
+		D872276A1F825BCF00C13025 /* address.plist in Resources */ = {isa = PBXBuildFile; fileRef = D87227691F825BCF00C13025 /* address.plist */; };
+		D872276C1F825E3E00C13025 /* ChinaAddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D872276B1F825E3E00C13025 /* ChinaAddressSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,6 @@
 /* Begin PBXFileReference section */
 		D87227381F8255D800C13025 /* ChinaWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChinaWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D872273B1F8255D800C13025 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D872273D1F8255D800C13025 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D87227401F8255D800C13025 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D87227421F8255D800C13025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D87227451F8255D800C13025 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +47,8 @@
 		D87227571F8255D800C13025 /* ChinaWeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChinaWeatherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D872275B1F8255D800C13025 /* ChinaWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinaWeatherUITests.swift; sourceTree = "<group>"; };
 		D872275D1F8255D800C13025 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D87227691F825BCF00C13025 /* address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = address.plist; sourceTree = "<group>"; };
+		D872276B1F825E3E00C13025 /* ChinaAddressSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChinaAddressSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				D872273B1F8255D800C13025 /* AppDelegate.swift */,
-				D872273D1F8255D800C13025 /* ViewController.swift */,
-				D872273F1F8255D800C13025 /* Main.storyboard */,
+				D872276B1F825E3E00C13025 /* ChinaAddressSearchViewController.swift */,
 				D87227421F8255D800C13025 /* Assets.xcassets */,
+				D872273F1F8255D800C13025 /* Main.storyboard */,
 				D87227441F8255D800C13025 /* LaunchScreen.storyboard */,
 				D87227471F8255D800C13025 /* Info.plist */,
+				D87227691F825BCF00C13025 /* address.plist */,
 			);
 			path = ChinaWeather;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D87227461F8255D800C13025 /* LaunchScreen.storyboard in Resources */,
+				D872276A1F825BCF00C13025 /* address.plist in Resources */,
 				D87227431F8255D800C13025 /* Assets.xcassets in Resources */,
 				D87227411F8255D800C13025 /* Main.storyboard in Resources */,
 			);
@@ -262,7 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D872273E1F8255D800C13025 /* ViewController.swift in Sources */,
+				D872276C1F825E3E00C13025 /* ChinaAddressSearchViewController.swift in Sources */,
 				D872273C1F8255D800C13025 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,6 +516,7 @@
 				D87227621F8255D800C13025 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D87227631F8255D800C13025 /* Build configuration list for PBXNativeTarget "ChinaWeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +525,7 @@
 				D87227651F8255D800C13025 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D87227661F8255D800C13025 /* Build configuration list for PBXNativeTarget "ChinaWeatherUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +534,7 @@
 				D87227681F8255D800C13025 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
