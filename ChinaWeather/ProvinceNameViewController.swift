@@ -28,10 +28,21 @@ class provinceNameViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "provinceCell", for: indexPath)
         let addressCell = chinaAddress?.address[indexPath.row]
-        cell.textLabel?.text = addressCell?["name"] as! String?
+        cell.textLabel?.text = addressCell?["name"] as? String
         return cell
+        
+    }
+    
+    // UITableViewDelegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let province = Province(dictionary: (chinaAddress?.address[indexPath.row])!)
+        let cityNameViewController = self.storyboard!.instantiateViewController(withIdentifier: "cityNameViewController") as! cityNameViewController
+        cityNameViewController.province = province
+        
+        self.navigationController?.pushViewController(cityNameViewController, animated: true)
         
     }
 

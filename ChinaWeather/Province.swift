@@ -11,11 +11,11 @@ import Foundation
 class Province {
     
     var name: String
-    var cities: [City]
+    var cities: [[String: AnyObject]]
     
     init(dictionary: [String: AnyObject]) {
         name = dictionary["name"] as! String
-        cities = dictionary["sub"] as! [City]
+        cities = dictionary["sub"] as! [[String: AnyObject]]
     }
 
 }

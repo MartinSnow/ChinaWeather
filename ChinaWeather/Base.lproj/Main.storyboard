@@ -6,16 +6,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ChianAddressSearchViewController-->
+        <!--provinceNameViewController-->
         <scene sceneID="jh5-94-hic">
             <objects>
-                <tableViewController title="ChianAddressSearchViewController" id="T2m-xp-1SL" customClass="provinceNameViewController" customModule="ChinaWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f1H-37-cPX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController title="provinceNameViewController" id="T2m-xp-1SL" customClass="provinceNameViewController" customModule="ChinaWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="45q-Ly-dP3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addressCell" id="M8e-9L-0Li">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="provinceCell" id="M8e-9L-0Li">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M8e-9L-0Li" id="wfy-eM-py0">
@@ -31,14 +32,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Province" id="r4X-gi-9zG"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f1H-37-cPX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="444" y="-9"/>
         </scene>
-        <!--View Controller-->
+        <!--City-->
         <scene sceneID="Ztt-zI-zBh">
             <objects>
-                <viewController id="5w4-VL-siD" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cityNameViewController" title="City" id="5w4-VL-siD" customClass="cityNameViewController" customModule="ChinaWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yel-m8-qLy"/>
                         <viewControllerLayoutGuide type="bottom" id="zGU-8P-cmf"/>
@@ -49,18 +49,10 @@
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zvJ-dk-Ugn">
                                 <subviews>
-                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZb-m4-Egi">
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="6wM-cy-CIK"/>
-                                        </constraints>
-                                        <items>
-                                            <navigationItem title="Title" id="LA8-Ki-qRR"/>
-                                        </items>
-                                    </navigationBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LhP-1x-bow">
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vVK-tz-Gvh">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityCell" id="vVK-tz-Gvh">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vVK-tz-Gvh" id="1xf-fk-w4f">
@@ -69,10 +61,13 @@
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="5w4-VL-siD" id="v0d-PA-YBC"/>
+                                            <outlet property="delegate" destination="5w4-VL-siD" id="q0Q-2p-GzJ"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="LZb-m4-Egi" firstAttribute="leading" secondItem="LhP-1x-bow" secondAttribute="leading" id="Ixo-G2-YyJ"/>
                                     <constraint firstAttribute="trailing" secondItem="LhP-1x-bow" secondAttribute="trailing" id="jBl-Wa-iuB"/>
                                     <constraint firstItem="LhP-1x-bow" firstAttribute="leading" secondItem="zvJ-dk-Ugn" secondAttribute="leading" id="k1G-hy-IBw"/>
                                 </constraints>
