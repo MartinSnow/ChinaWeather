@@ -12,6 +12,8 @@ import UIKit
 class cityNameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var province: Province?
+    var weatherList: [[String:AnyObject]]?
+    var name: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +35,35 @@ class cityNameViewController: UIViewController, UITableViewDataSource, UITableVi
     // UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        let name = cell?.textLabel?.text
-        let weatherViewController = self.storyboard?.instantiateViewController(withIdentifier: "weatherViewController") as! weatherViewController
-        weatherViewController.name = name
+        self.name = cell?.textLabel?.text
         
-        self.navigationController?.pushViewController(weatherViewController, animated: true)
+        getWeatherInformation(cityName: name!)
+        
+    }
+}
+
+extension cityNameViewController {
+
+    func getWeatherInformation(cityName:String){
+        
+        WeatherClient.sharedInstance.getWeatherData(cityName: cityName){ (weatherData, error) in
+            
+            if error != nil {
+                print("There is an error")
+                return
+            }
+            DispatchQueue.main.async{
+            
+                if let list = weatherData!["list"] as? [[String: AnyObject]] {
+                    self.weatherList = list
+                }
+                
+                let weatherViewController = self.storyboard?.instantiateViewController(withIdentifier: "weatherViewController") as! weatherViewController
+                weatherViewController.name = self.name
+                weatherViewController.weatherList = self.weatherList
+                self.navigationController?.pushViewController(weatherViewController, animated: true)
+            }
+            
+        }
     }
 }

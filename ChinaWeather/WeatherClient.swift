@@ -38,7 +38,8 @@ class WeatherClient: NSObject {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
         }
-        print("parsedResult is \(parsedResult)")
+        //print("parsedResult is \(parsedResult)")
+        
         completionHandlerForConvertData(parsedResult, nil)
     }
 }

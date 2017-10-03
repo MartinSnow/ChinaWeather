@@ -9,35 +9,34 @@
 import Foundation
 import UIKit
 
-class weatherViewController: UIViewController {
+class weatherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // Properties
     var name: String?
+    var weatherList: [[String:AnyObject]]?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = name
-        
-        getWeatherInformation(cityName: name!)
     }
     
-    func getWeatherInformation(cityName:String){
     
-        WeatherClient.sharedInstance.getWeatherData(cityName: cityName){ (weatherData, error) in
-            
-            if error != nil {
-                print("There is an error")
-                return
-            }
-            
-            if let list = weatherData!["list"] as? [[String: AnyObject]] {
-                for item in list {
-                }
-            
-            }
-            
-        
-        }
+    
+    // UITableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (weatherList?.count)!
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "weatherCell", for: indexPath)
+        let weatherInfo = weatherList?[indexPath.row]
+        cell.detailTextLabel?.text = weatherInfo?["dt_txt"] as? String
+        let tempDic = weatherInfo?["main"] as? [String: AnyObject]
+        let temp = tempDic?["temp"] as! Double
+        cell.textLabel?.text = "\(temp)℃"
+        return cell
+    }
+    
+    
 }
