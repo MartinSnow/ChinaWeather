@@ -14,7 +14,11 @@
 		D87227511F8255D800C13025 /* ChinaWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87227501F8255D800C13025 /* ChinaWeatherTests.swift */; };
 		D872275C1F8255D800C13025 /* ChinaWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D872275B1F8255D800C13025 /* ChinaWeatherUITests.swift */; };
 		D872276A1F825BCF00C13025 /* address.plist in Resources */ = {isa = PBXBuildFile; fileRef = D87227691F825BCF00C13025 /* address.plist */; };
-		D872276C1F825E3E00C13025 /* ChinaAddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D872276B1F825E3E00C13025 /* ChinaAddressSearchViewController.swift */; };
+		D872276C1F825E3E00C13025 /* ProvinceNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D872276B1F825E3E00C13025 /* ProvinceNameViewController.swift */; };
+		D872276E1F83584300C13025 /* CityNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D872276D1F83584300C13025 /* CityNameViewController.swift */; };
+		D87227731F8360B100C13025 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87227721F8360B100C13025 /* City.swift */; };
+		D87227751F8360BF00C13025 /* Province.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87227741F8360BF00C13025 /* Province.swift */; };
+		D87227771F836B1F00C13025 /* ChinaAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87227761F836B1F00C13025 /* ChinaAddress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +52,11 @@
 		D872275B1F8255D800C13025 /* ChinaWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChinaWeatherUITests.swift; sourceTree = "<group>"; };
 		D872275D1F8255D800C13025 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D87227691F825BCF00C13025 /* address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = address.plist; sourceTree = "<group>"; };
-		D872276B1F825E3E00C13025 /* ChinaAddressSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChinaAddressSearchViewController.swift; sourceTree = "<group>"; };
+		D872276B1F825E3E00C13025 /* ProvinceNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvinceNameViewController.swift; sourceTree = "<group>"; };
+		D872276D1F83584300C13025 /* CityNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityNameViewController.swift; sourceTree = "<group>"; };
+		D87227721F8360B100C13025 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		D87227741F8360BF00C13025 /* Province.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Province.swift; sourceTree = "<group>"; };
+		D87227761F836B1F00C13025 /* ChinaAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChinaAddress.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +108,14 @@
 			isa = PBXGroup;
 			children = (
 				D872273B1F8255D800C13025 /* AppDelegate.swift */,
-				D872276B1F825E3E00C13025 /* ChinaAddressSearchViewController.swift */,
+				D872276B1F825E3E00C13025 /* ProvinceNameViewController.swift */,
+				D872276D1F83584300C13025 /* CityNameViewController.swift */,
 				D87227421F8255D800C13025 /* Assets.xcassets */,
 				D872273F1F8255D800C13025 /* Main.storyboard */,
 				D87227441F8255D800C13025 /* LaunchScreen.storyboard */,
-				D87227471F8255D800C13025 /* Info.plist */,
 				D87227691F825BCF00C13025 /* address.plist */,
+				D87227471F8255D800C13025 /* Info.plist */,
+				D872276F1F835D3200C13025 /* Model */,
 			);
 			path = ChinaWeather;
 			sourceTree = "<group>";
@@ -126,6 +136,16 @@
 				D872275D1F8255D800C13025 /* Info.plist */,
 			);
 			path = ChinaWeatherUITests;
+			sourceTree = "<group>";
+		};
+		D872276F1F835D3200C13025 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D87227721F8360B100C13025 /* City.swift */,
+				D87227741F8360BF00C13025 /* Province.swift */,
+				D87227761F836B1F00C13025 /* ChinaAddress.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,8 +286,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D872276C1F825E3E00C13025 /* ChinaAddressSearchViewController.swift in Sources */,
+				D87227771F836B1F00C13025 /* ChinaAddress.swift in Sources */,
+				D872276C1F825E3E00C13025 /* ProvinceNameViewController.swift in Sources */,
+				D87227731F8360B100C13025 /* City.swift in Sources */,
+				D87227751F8360BF00C13025 /* Province.swift in Sources */,
 				D872273C1F8255D800C13025 /* AppDelegate.swift in Sources */,
+				D872276E1F83584300C13025 /* CityNameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

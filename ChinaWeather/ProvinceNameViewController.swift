@@ -1,5 +1,5 @@
 //
-//  ChinaAddressSearchViewController.swift
+//  ProvinceNameViewController.swift
 //  ChinaWeather
 //
 //  Created by Ma Ding on 17/10/2.
@@ -9,30 +9,28 @@
 import Foundation
 import UIKit
 
-class chinaAddressSearchViewController: UITableViewController {
+class provinceNameViewController: UITableViewController {
     
     // properties
     var data: NSDictionary?
+    var chinaAddress: ChinaAddress?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("1111")
         data = NSDictionary(contentsOf: Bundle.main.url(forResource: "address", withExtension: "plist")!)
-        
+        chinaAddress = ChinaAddress(dictionary: data as! [String : AnyObject])
     }
     
     // UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let addressArray:AnyObject = data?.object(forKey: "address") as! NSArray
-        print("cell number is \(addressArray.count)")
-        return addressArray.count
+        print("cell number is \((chinaAddress?.address.count)!)")
+        return (chinaAddress?.address.count)!
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath)
-        let addressArray:AnyObject = data?.object(forKey: "address") as! NSArray
-        let addressCell:AnyObject = addressArray[indexPath.row] as! NSDictionary
-        cell.textLabel?.text = addressCell.object(forKey: "name") as? String
+        let addressCell = chinaAddress?.address[indexPath.row]
+        cell.textLabel?.text = addressCell?["name"] as! String?
         return cell
         
     }
