@@ -97,26 +97,8 @@
                     <view key="view" contentMode="scaleToFill" id="fgw-jK-UQN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ih-bw-fic">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="20B-QO-hzR"/>
-                                    <constraint firstAttribute="height" constant="50" id="ulb-Ba-UXf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="8Ih-bw-fic" firstAttribute="top" secondItem="687-JI-vZ4" secondAttribute="bottom" constant="65" id="SyD-0t-GCH"/>
-                            <constraint firstItem="8Ih-bw-fic" firstAttribute="centerX" secondItem="fgw-jK-UQN" secondAttribute="centerX" id="T3x-qx-3p4"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="cityName" destination="8Ih-bw-fic" id="EPy-hf-NyB"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="la4-ke-dpa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

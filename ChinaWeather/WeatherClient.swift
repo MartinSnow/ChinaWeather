@@ -12,10 +12,9 @@ class WeatherClient: NSObject {
     
     static var sharedInstance = WeatherClient()
     
-    func getWeatherData(cityName: String, completionHandlerForPublicUserData: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func getWeatherData(cityName: String, completionHandlerForPublicUserData: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
-        let request = NSMutableURLRequest(url: URL(string: "http://samples.openweathermap.org/data/2.5/forecast?q=\(cityName)&appid=b1b15e88fa797225412429c1c50c122a1")!)
-        print("url is \(URL(string: "http://samples.openweathermap.org/data/2.5/forecast?q=\(cityName)&appid=b1b15e88fa797225412429c1c50c122a1")!)")
+        let request = NSMutableURLRequest(url: URL(string: "http://api.openweathermap.org/data/2.5/forecast?q=\(cityName)&appid=fd9e214e9d86b16132947c62af0cbacb&units=metric")!)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil { // Handle error...
@@ -31,10 +30,10 @@ class WeatherClient: NSObject {
         return task
     }
     
-    func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
-        var parsedResult: AnyObject! = nil
+    func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) {
+        var parsedResult: [String: AnyObject]?
         do {
-            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
+            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : AnyObject]
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
             completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))

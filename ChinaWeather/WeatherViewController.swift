@@ -13,18 +13,29 @@ class weatherViewController: UIViewController {
     
     // Properties
     var name: String?
-    @IBOutlet weak var cityName: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cityName.text = name
+        self.title = name
+        
         getWeatherInformation(cityName: name!)
     }
     
     func getWeatherInformation(cityName:String){
     
         WeatherClient.sharedInstance.getWeatherData(cityName: cityName){ (weatherData, error) in
-            print(weatherData)
+            
+            if error != nil {
+                print("There is an error")
+                return
+            }
+            
+            if let list = weatherData!["list"] as? [[String: AnyObject]] {
+                for item in list {
+                }
+            
+            }
             
         
         }
