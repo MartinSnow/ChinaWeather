@@ -29,4 +29,14 @@ class cityNameViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.textLabel?.text = cityCell?["name"] as? String
         return cell
     }
+    
+    // UITableViewDelegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        let name = cell?.textLabel?.text
+        let weatherViewController = self.storyboard?.instantiateViewController(withIdentifier: "weatherViewController") as! weatherViewController
+        weatherViewController.name = name
+        
+        self.navigationController?.pushViewController(weatherViewController, animated: true)
+    }
 }
