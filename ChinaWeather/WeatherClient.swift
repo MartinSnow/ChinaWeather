@@ -12,9 +12,9 @@ class WeatherClient: NSObject {
     
     static var sharedInstance = WeatherClient()
     
-    func getWeatherData(cityName: String, completionHandlerForPublicUserData: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func getWeatherData(lat: Double, lon: Double, completionHandlerForPublicUserData: @escaping (_ result: [String: AnyObject]?, _ error: NSError?) -> Void) -> URLSessionDataTask {
         
-        let request = NSMutableURLRequest(url: URL(string: "http://api.openweathermap.org/data/2.5/forecast?q=\(cityName)&appid=fd9e214e9d86b16132947c62af0cbacb&units=metric")!)
+        let request = NSMutableURLRequest(url: URL(string: "http://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=fd9e214e9d86b16132947c62af0cbacb&units=metric")!)
         let session = URLSession.shared
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             if error != nil { // Handle error...

@@ -14,7 +14,7 @@ class cityNameViewController: UIViewController, UITableViewDataSource, UITableVi
     var province: Province?
     var weatherList: [[String:AnyObject]]?
     var cityName: String?
-    var coordinator: [Float]?
+    //var coordinator: [Float]?
     let specialCitites = ["北京","天津","上海","重庆","香港特别行政区","澳门特别行政区","台湾"]
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class cityNameViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("cell number is \((province?.cities.count)!)")
+        //print("cell number is \((province?.cities.count)!)")
         return (province?.cities.count)!
     }
     
@@ -39,8 +39,13 @@ class cityNameViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.cellForRow(at: indexPath)
         self.cityName = cell?.textLabel?.text
         
-        getCoordinator(provinceName: (province?.name)!, cityName: cityName!)
-        //getWeatherInformation(cityName: name!)
+        getCoordinator(provinceName: (province?.name)!, cityName: cityName!) {(lat, lon, error) in
+            if error != nil {
+                print("There is no lat and lon")
+            }
+            self.getWeatherInformation(lat: lat!, lon: lon!)
+        }
+        
         
     }
 }
@@ -48,7 +53,7 @@ class cityNameViewController: UIViewController, UITableViewDataSource, UITableVi
 // Get coordinator of the city
 extension cityNameViewController {
     
-    func getCoordinator(provinceName: String, cityName: String){
+    func getCoordinator(provinceName: String, cityName: String, completionHandlerForCoordinator: @escaping (_ lat: Double?, _ lon: Double?, _ error: NSError?) -> Void){
         
         if !specialCitites.contains(provinceName) {
             let path = Bundle.main.path(forResource: provinceName, ofType: "json")
@@ -68,8 +73,10 @@ extension cityNameViewController {
                             if let properties = feature["properties"] as? [String: AnyObject] {
                                 if let name = properties["name"] as? String {
                                     if name == cityName {
-                                        self.coordinator = properties["cp"] as? [Float]
-                                        print("\(cityName), \(self.coordinator)")
+                                        let coordinator = properties["cp"] as? [Double]
+                                        //print("\(cityName), \(coordinator)")
+    completionHandlerForCoordinator(coordinator?[1], coordinator?[0], nil)
+    
                                     }
                                 }
                             }
@@ -80,26 +87,33 @@ extension cityNameViewController {
         } else {
             switch provinceName {
             case "北京":
-                self.coordinator = [117.0923,40.5121]
-                print("\(provinceName), \(self.coordinator)")
+                let coordinator = [117.0923,40.5121]
+                completionHandlerForCoordinator(coordinator[1], coordinator[0], nil)
+                //print("\(provinceName), \(coordinator)")
             case "天津":
-                self.coordinator = [117.4672,40.004]
-                print("\(provinceName), \(self.coordinator)")
+                let coordinator = [117.4672,40.004]
+                completionHandlerForCoordinator(coordinator[1], coordinator[0], nil)
+                //print("\(provinceName), \(coordinator)")
             case "上海":
-                self.coordinator = [121.4333,31.1607]
-                print("\(provinceName), \(self.coordinator)")
+                let coordinator = [121.4333,31.1607]
+                completionHandlerForCoordinator(coordinator[1], coordinator[0], nil)
+                //print("\(provinceName), \(coordinator)")
             case "重庆":
-                self.coordinator = [108.8196,28.8666]
-                print("\(provinceName), \(self.coordinator)")
+                let coordinator = [108.8196,28.8666]
+                completionHandlerForCoordinator(coordinator[1], coordinator[0], nil)
+                print("\(provinceName), \(coordinator)")
             case "香港特别行政区":
-                self.coordinator = [114.1657, 22.2793]
-                print("\(provinceName), \(self.coordinator)")
+                let coordinator = [114.1657, 22.2793]
+                completionHandlerForCoordinator(coordinator[1], coordinator[0], nil)
+                //print("\(provinceName), \(coordinator)")
             case "澳门特别行政区":
-                self.coordinator = [113.5586, 22.1630]
-                print("\(provinceName), \(self.coordinator)")
+                let coordinator = [113.5586, 22.1630]
+                completionHandlerForCoordinator(coordinator[1], coordinator[0], nil)
+                //print("\(provinceName), \(coordinator)")
             case "台湾":
-                self.coordinator = [121.0193, 23.4366]
-                print("\(provinceName), \(self.coordinator)")
+                let coordinator = [121.0193, 23.4366]
+                completionHandlerForCoordinator(coordinator[1], coordinator[0], nil)
+                //print("\(provinceName), \(coordinator)")
             default:
                 return
             }
@@ -111,9 +125,9 @@ extension cityNameViewController {
 
 extension cityNameViewController {
 
-    func getWeatherInformation(cityName:String){
+    func getWeatherInformation(lat: Double, lon: Double){
         
-        WeatherClient.sharedInstance.getWeatherData(cityName: cityName){ (weatherData, error) in
+        WeatherClient.sharedInstance.getWeatherData(lat: lat, lon: lon){ (weatherData, error) in
             
             if error != nil {
                 print("There is an error")

@@ -23,7 +23,7 @@ class provinceNameViewController: UITableViewController {
     
     // UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("cell number is \((chinaAddress?.address.count)!)")
+        //print("cell number is \((chinaAddress?.address.count)!)")
         return (chinaAddress?.address.count)!
     }
     
