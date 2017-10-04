@@ -17,12 +17,14 @@ class provinceNameViewController: UITableViewController {
     
     var originalArray: [String] = []
     var searchingDataArray: [String] = []
-    var search = false //This for search is on or not that identifier
+    var searching = false //This for search is on or not that identifier
     
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchBar.showsCancelButton = false
         
         data = NSDictionary(contentsOf: Bundle.main.url(forResource: "address", withExtension: "plist")!)
         chinaAddress = ChinaAddress(dictionary: data as! [String : AnyObject])
@@ -31,12 +33,11 @@ class provinceNameViewController: UITableViewController {
             let province = item["name"] as! String
             originalArray.append(province)
         }
-        //self.hideKeyboard()
     }
     
     // UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if search == true {
+        if searching == true {
             return searchingDataArray.count
         } else {
             return originalArray.count
@@ -45,7 +46,7 @@ class provinceNameViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "provinceCell", for: indexPath)
-        if search == true {
+        if searching == true {
             cell.textLabel?.text = searchingDataArray[indexPath.row]
         } else {
             cell.textLabel?.text = originalArray[indexPath.row]
@@ -71,8 +72,10 @@ class provinceNameViewController: UITableViewController {
     }
 }
 
+// Add a searchbar on the tableView
 extension provinceNameViewController: UISearchBarDelegate {
     
+    // How to add searchBar https://www.youtube.com/watch?v=MgNRMcCWJhU
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         searchingDataArray = originalArray.filter({ (text) -> Bool in
@@ -81,25 +84,42 @@ extension provinceNameViewController: UISearchBarDelegate {
             return range.location != NSNotFound
         })
         if searchingDataArray.count == 0 {
-            search = false
+            searching = false
         } else {
-            search = true
+            searching = true
         }
         self.tableView.reloadData()
     }
-
-}
-
-extension provinceNameViewController {
-    func hideKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: #selector(provinceNameViewController.dismissKeyboard))
-        
-        view.addGestureRecognizer(tap)
+    
+    //How to hide keyboard after searching https://www.youtube.com/watch?v=cQj744EsOcM
+    // When search ends
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.endEditing(true)
+        searchBar.showsCancelButton = false // Hide cancel button when search ends
     }
     
-    func dismissKeyboard() {
-        view.endEditing(true)
+    // When search begins
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searching = true
+        searchBar.showsCancelButton = true // Show cancel button when search begins
     }
+    
+    // When you click on cancel
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchBar.endEditing(true)
+        searchBar.showsCancelButton = false // Hide cancel button when click it
+    }
+    
+    // When you click on search
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searching = false // I think it's the same of true
+        searchBar.endEditing(true)
+        searchBar.showsCancelButton = false // Hide cancel button when click search button
+    }
+    
+    
+
 }
+
