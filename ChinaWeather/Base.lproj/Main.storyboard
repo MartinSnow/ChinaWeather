@@ -41,6 +41,7 @@
                     <navigationItem key="navigationItem" title="Province" id="r4X-gi-9zG"/>
                     <connections>
                         <outlet property="searchBar" destination="AfN-CP-8tY" id="bhC-kA-g99"/>
+                        <outlet property="tableView" destination="45q-Ly-dP3" id="p4I-0x-0Zy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1H-37-cPX" userLabel="First Responder" sceneMemberID="firstResponder"/>

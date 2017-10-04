@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class provinceNameViewController: UITableViewController {
+class provinceNameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // properties
     var data: NSDictionary?
@@ -19,6 +19,8 @@ class provinceNameViewController: UITableViewController {
     var searchingDataArray: [String] = []
     var searching = false //This for search is on or not that identifier
     
+    @IBOutlet var tableView: UITableView!
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
@@ -26,6 +28,14 @@ class provinceNameViewController: UITableViewController {
         
         searchBar.showsCancelButton = false
         
+        /* I want to use this code to hide "x" symbol of searchBar, but it doesn't work.
+        for item in searchBar.subviews {
+            if item.isKind(of: UITextField.self) {
+                let searchTextField = item as! UITextField
+                searchTextField.clearButtonMode = .never
+            }
+        }
+        */
         data = NSDictionary(contentsOf: Bundle.main.url(forResource: "address", withExtension: "plist")!)
         chinaAddress = ChinaAddress(dictionary: data as! [String : AnyObject])
         
@@ -36,7 +46,7 @@ class provinceNameViewController: UITableViewController {
     }
     
     // UITableViewDataSource
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching == true {
             return searchingDataArray.count
         } else {
@@ -44,7 +54,7 @@ class provinceNameViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "provinceCell", for: indexPath)
         if searching == true {
             cell.textLabel?.text = searchingDataArray[indexPath.row]
@@ -55,7 +65,7 @@ class provinceNameViewController: UITableViewController {
     }
     
     // UITableViewDelegate
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cellName = tableView.cellForRow(at: indexPath)?.textLabel?.text
         for item in (chinaAddress?.address)! {
@@ -88,7 +98,7 @@ extension provinceNameViewController: UISearchBarDelegate {
         } else {
             searching = true
         }
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     //How to hide keyboard after searching https://www.youtube.com/watch?v=cQj744EsOcM
@@ -110,6 +120,7 @@ extension provinceNameViewController: UISearchBarDelegate {
         searching = false
         searchBar.endEditing(true)
         searchBar.showsCancelButton = false // Hide cancel button when click it
+        
     }
     
     // When you click on search
@@ -118,6 +129,8 @@ extension provinceNameViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
         searchBar.showsCancelButton = false // Hide cancel button when click search button
     }
+    
+    
     
     
 
