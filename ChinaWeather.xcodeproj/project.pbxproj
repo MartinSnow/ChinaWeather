@@ -55,6 +55,7 @@
 		D87227C91F84A49E00C13025 /* 新疆维吾尔自治区.json in Resources */ = {isa = PBXBuildFile; fileRef = D87227A81F84A49E00C13025 /* 新疆维吾尔自治区.json */; };
 		D87227CA1F84A49E00C13025 /* 云南省.json in Resources */ = {isa = PBXBuildFile; fileRef = D87227A91F84A49E00C13025 /* 云南省.json */; };
 		D87227CB1F84A49E00C13025 /* 浙江省.json in Resources */ = {isa = PBXBuildFile; fileRef = D87227AA1F84A49E00C13025 /* 浙江省.json */; };
+		D87227CD1F84A8B900C13025 /* 重庆.json in Resources */ = {isa = PBXBuildFile; fileRef = D87227CC1F84A8B900C13025 /* 重庆.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		D87227A81F84A49E00C13025 /* 新疆维吾尔自治区.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "新疆维吾尔自治区.json"; path = "ChinaCoordinatorJSON/新疆维吾尔自治区.json"; sourceTree = "<group>"; };
 		D87227A91F84A49E00C13025 /* 云南省.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "云南省.json"; path = "ChinaCoordinatorJSON/云南省.json"; sourceTree = "<group>"; };
 		D87227AA1F84A49E00C13025 /* 浙江省.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "浙江省.json"; path = "ChinaCoordinatorJSON/浙江省.json"; sourceTree = "<group>"; };
+		D87227CC1F84A8B900C13025 /* 重庆.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "重庆.json"; path = "ChinaCoordinatorJSON/重庆.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,9 +252,14 @@
 		D87227871F848DFB00C13025 /* Assistant */ = {
 			isa = PBXGroup;
 			children = (
-				D872278A1F84A49E00C13025 /* 安徽省.json */,
-				D872278B1F84A49E00C13025 /* 澳门特别行政区.json */,
 				D872278C1F84A49E00C13025 /* 北京.json */,
+				D87227A51F84A49E00C13025 /* 天津.json */,
+				D87227A21F84A49E00C13025 /* 上海.json */,
+				D87227CC1F84A8B900C13025 /* 重庆.json */,
+				D87227A71F84A49E00C13025 /* 香港特别行政区.json */,
+				D872278B1F84A49E00C13025 /* 澳门特别行政区.json */,
+				D87227A41F84A49E00C13025 /* 台湾.json */,
+				D872278A1F84A49E00C13025 /* 安徽省.json */,
 				D872278D1F84A49E00C13025 /* 福建省.json */,
 				D872278E1F84A49E00C13025 /* 甘肃省.json */,
 				D872278F1F84A49E00C13025 /* 广东省.json */,
@@ -274,12 +281,8 @@
 				D872279F1F84A49E00C13025 /* 山东省.json */,
 				D87227A01F84A49E00C13025 /* 山西省.json */,
 				D87227A11F84A49E00C13025 /* 陕西省.json */,
-				D87227A21F84A49E00C13025 /* 上海.json */,
 				D87227A31F84A49E00C13025 /* 四川省.json */,
-				D87227A41F84A49E00C13025 /* 台湾.json */,
-				D87227A51F84A49E00C13025 /* 天津.json */,
 				D87227A61F84A49E00C13025 /* 西藏自治区.json */,
-				D87227A71F84A49E00C13025 /* 香港特别行政区.json */,
 				D87227A81F84A49E00C13025 /* 新疆维吾尔自治区.json */,
 				D87227A91F84A49E00C13025 /* 云南省.json */,
 				D87227AA1F84A49E00C13025 /* 浙江省.json */,
@@ -410,6 +413,7 @@
 				D87227C31F84A49E00C13025 /* 上海.json in Resources */,
 				D87227B81F84A49E00C13025 /* 湖南省.json in Resources */,
 				D872276A1F825BCF00C13025 /* address.plist in Resources */,
+				D87227CD1F84A8B900C13025 /* 重庆.json in Resources */,
 				D87227B91F84A49E00C13025 /* 吉林省.json in Resources */,
 				D87227CA1F84A49E00C13025 /* 云南省.json in Resources */,
 				D87227C01F84A49E00C13025 /* 山东省.json in Resources */,
