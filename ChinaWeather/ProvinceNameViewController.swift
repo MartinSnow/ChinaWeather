@@ -36,8 +36,6 @@ class provinceNameViewController: UITableViewController {
     
     // UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("cell number is \((chinaAddress?.address.count)!)")
-        //return (chinaAddress?.address.count)!
         if search == true {
             return searchingDataArray.count
         } else {
@@ -47,7 +45,6 @@ class provinceNameViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "provinceCell", for: indexPath)
-        //let addressCell = chinaAddress?.address[indexPath.row]
         if search == true {
             cell.textLabel?.text = searchingDataArray[indexPath.row]
         } else {
@@ -59,11 +56,18 @@ class provinceNameViewController: UITableViewController {
     // UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let province = Province(dictionary: (chinaAddress?.address[indexPath.row])!)
-        let cityNameViewController = self.storyboard!.instantiateViewController(withIdentifier: "cityNameViewController") as! cityNameViewController
-        cityNameViewController.province = province
-        
-        self.navigationController?.pushViewController(cityNameViewController, animated: true)
+        let cellName = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        for item in (chinaAddress?.address)! {
+            let itemName = item["name"] as! String
+            if itemName == cellName {
+                let province = Province(dictionary: item)
+                let cityNameViewController = self.storyboard!.instantiateViewController(withIdentifier: "cityNameViewController") as! cityNameViewController
+                cityNameViewController.province = province
+                
+                self.navigationController?.pushViewController(cityNameViewController, animated: true)
+                break
+            }
+        }
     }
 }
 
