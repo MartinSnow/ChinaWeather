@@ -12,13 +12,13 @@ import UIKit
 class weatherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     // Properties
-    var name: String?
+    var cityName: String?
     var weatherList: [[String:AnyObject]]?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = name
+        self.title = cityName
     }
     
     

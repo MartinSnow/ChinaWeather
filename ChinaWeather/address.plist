@@ -11,7 +11,7 @@
 			<array>
 				<dict>
 					<key>name</key>
-					<string>Beijing</string>
+					<string>北京市</string>
 					<key>sub</key>
 					<array>
 						<string>东城区</string>
@@ -2812,7 +2812,7 @@
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>荷泽市</string>
+					<string>菏泽市</string>
 					<key>sub</key>
 					<array>
 						<string>牡丹区</string>
@@ -3371,7 +3371,7 @@
 				</dict>
 				<dict>
 					<key>name</key>
-					<string>神农架</string>
+					<string>神农架林区</string>
 					<key>sub</key>
 					<array>
 						<string>仙桃市</string>
