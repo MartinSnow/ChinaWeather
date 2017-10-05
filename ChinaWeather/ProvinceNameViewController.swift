@@ -28,14 +28,14 @@ class provinceNameViewController: UIViewController, UITableViewDataSource, UITab
         
         searchBar.showsCancelButton = false
         
-        /* I want to use this code to hide "x" symbol of searchBar, but it doesn't work.
-        for item in searchBar.subviews {
+        //I want to use this code to hide "x" symbol of searchBar, but it doesn't work.
+        /*for item in searchBar.subviews {
             if item.isKind(of: UITextField.self) {
                 let searchTextField = item as! UITextField
                 searchTextField.clearButtonMode = .never
             }
-        }
-        */
+        }*/
+        
         data = NSDictionary(contentsOf: Bundle.main.url(forResource: "address", withExtension: "plist")!)
         chinaAddress = ChinaAddress(dictionary: data as! [String : AnyObject])
         
@@ -56,7 +56,7 @@ class provinceNameViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "provinceCell", for: indexPath)
-        if searching == true {
+        if searching == true, (searchingDataArray.count > indexPath.row) {
             cell.textLabel?.text = searchingDataArray[indexPath.row]
         } else {
             cell.textLabel?.text = originalArray[indexPath.row]
@@ -121,6 +121,14 @@ extension provinceNameViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
         searchBar.showsCancelButton = false // Hide cancel button when click it
         
+        // This two lines below will hide the searchBar cross ("x")
+        /*
+        guard let firstSubview = searchBar.subviews.first else { return }
+        
+        firstSubview.subviews.forEach {
+            ($0 as? UITextField)?.clearButtonMode = .never
+        }
+        */
     }
     
     // When you click on search
@@ -129,10 +137,5 @@ extension provinceNameViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
         searchBar.showsCancelButton = false // Hide cancel button when click search button
     }
-    
-    
-    
-    
-
 }
 
