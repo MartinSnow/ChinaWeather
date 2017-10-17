@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D81217FA1F962D6700C52B99 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81217F91F962D6700C52B99 /* CoreDataStack.swift */; };
+		D81217FD1F962DAE00C52B99 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D81217FB1F962DAE00C52B99 /* Model.xcdatamodeld */; };
 		D872273C1F8255D800C13025 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D872273B1F8255D800C13025 /* AppDelegate.swift */; };
 		D87227411F8255D800C13025 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D872273F1F8255D800C13025 /* Main.storyboard */; };
 		D87227431F8255D800C13025 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D87227421F8255D800C13025 /* Assets.xcassets */; };
@@ -76,6 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D81217F91F962D6700C52B99 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		D81217FC1F962DAE00C52B99 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D87227381F8255D800C13025 /* ChinaWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChinaWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D872273B1F8255D800C13025 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D87227401F8255D800C13025 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -158,6 +162,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D81217F81F962D5900C52B99 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				D81217F91F962D6700C52B99 /* CoreDataStack.swift */,
+				D81217FB1F962DAE00C52B99 /* Model.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		D872272F1F8255D800C13025 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +227,7 @@
 		D872276F1F835D3200C13025 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D81217F81F962D5900C52B99 /* CoreData */,
 				D872277D1F83AF2900C13025 /* Weather */,
 				D872277C1F83AF1C00C13025 /* New Group */,
 			);
@@ -468,9 +482,11 @@
 				D872276C1F825E3E00C13025 /* ProvinceNameViewController.swift in Sources */,
 				D87227731F8360B100C13025 /* City.swift in Sources */,
 				D87227751F8360BF00C13025 /* Province.swift in Sources */,
+				D81217FA1F962D6700C52B99 /* CoreDataStack.swift in Sources */,
 				D872277F1F83AF3B00C13025 /* Constants.swift in Sources */,
 				D87227831F83B96B00C13025 /* WeatherClient.swift in Sources */,
 				D872273C1F8255D800C13025 /* AppDelegate.swift in Sources */,
+				D81217FD1F962DAE00C52B99 /* Model.xcdatamodeld in Sources */,
 				D872276E1F83584300C13025 /* CityNameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -741,6 +757,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D81217FB1F962DAE00C52B99 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D81217FC1F962DAE00C52B99 /* Model.xcdatamodel */,
+			);
+			currentVersion = D81217FC1F962DAE00C52B99 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D87227301F8255D800C13025 /* Project object */;
 }
